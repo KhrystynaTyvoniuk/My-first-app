@@ -1,19 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-   <div class="test"> 
-    <h1 class="test-ttl">
-        Test
-    </h1> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/5df9263997.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <form action="submit" class="search" id="formSearch">
+        <input
+          type="search"
+          autocomplete="off"
+          id="searchCity"
+          class="search__city"
+          placeholder="Enter your city"
+        />
 
-   </div>
+        <input class="search__btn" type="submit" value="Search" />
+      </form>
+    </div>
+    <div class="main">
+      <div class="intro">
+        <h1 class="intro-city" id="city">
+          Stockholm
+        </h1>
+        <p class="intro-date">
+          September 15, Monday
+        </p>
+        <div class="temperature">
+          <span id="temperature"> 20 </span>
+          <span class="unit">
+            ° <a href="#" id="celsius-link"> C </a> |
+            <a href="#" id="fahrenheit-link"> F </a>
+          </span>
+        </div>
+      </div>
+      <div class="emoji">
+        <img
+          src="https://freepngimg.com/thumb/weather/86940-forecasting-weather-sky-atmosphere-rain-png-download-free-thumb.png"
+          alt=""
+        />
+      </div>
+      <div class="data">
+        <ul class="data__list">
+          <li>🌇 Sunrise 03:10</li>
+          <li>🌆 Sunset 22:02</li>
+          <li>💧 Humidity 60%</li>
+          <li>🌬 Wind speed 10km/h</li>
+          <li>🔗 Pressure 30.12inHg</li>
+          <li>🛣 Visibility 0.4 mi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="daily">
+      <div class="daily-card">
+        <p>🌥</p>
+        <p class="daily-card__temp">17° C</p>
+        <h5 class="daily-card__day">Monday</h5>
+      </div>
+      <div class="daily-card">
+        <p>☀️</p>
+        <p class="daily-card__temp">19° C</p>
+        <h5 class="daily-card__day">Tuesday</h5>
+      </div>
+      <div class="daily-card">
+        <p>🌦</p>
+        <p class="daily-card__temp">22° C</p>
+        <h5 class="daily-card__day">Wednesday</h5>
+      </div>
+      <div class="daily-card">
+        <p>🌤</p>
+        <p class="daily-card__temp">18° C</p>
+        <h5 class="daily-card__day">Thursday</h5>
+      </div>
+      <div class="daily-card">
+        <p>🌦</p>
+        <p class="daily-card__temp">20° C</p>
+        <h5 class="daily-card__day">Friday</h5>
+      </div>
+      <div class="daily-card">
+        <p>☀️</p>
+        <p class="daily-card__temp">17° C</p>
+        <h5 class="daily-card__day">Saturday</h5>
+      </div>
+      <div class="daily-card">
+        <p>🌥</p>
+        <p class="daily-card__temp">19°C</p>
+        <h5 class="daily-card__day">Sunday</h5>
+      </div>
+    </div>
+    <footer class="footer">
+      coded by
+      <a href="https://www.instagram.com/de.nikka/">Khrystyna Tyvoniuk</a>
+    </footer>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
