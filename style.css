@@ -99,4 +99,26 @@ footer{
  
 }
 a{ text-decoration: none;
-color: rgb(24, 56, 87);}
+color: rgb(152, 68, 109);
+cursor: pointer;
+}
+a::before {  
+    transform: scaleX(0);
+    transform-origin: bottom right;
+  }
+  
+  a:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  a::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0 0 0 0;
+    background: rgb(65, 150, 73);
+    z-index: -1;
+    transition: transform .3s ease;
+  }
