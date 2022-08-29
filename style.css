@@ -98,7 +98,17 @@ footer{
     color: rgb(48, 103, 155);
  
 }
-a { text-decoration: none;
+a { 
+    cursor: pointer;
+    }
 
-cursor: pointer;
+ .temperature .active {
+    cursor: default;
+    color:rgb(30, 78, 123);
+    text-decoration: none;
+}
+.unit{
+    position: relative;
+    font-size: 16px;
+    top: -20px;
 }

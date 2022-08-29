@@ -1,27 +1,4 @@
-/*let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-let day = days[now.getDay()];
-let hours = now.getHours();
-let minutes = now.getMinutes();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
 
-let bodyDate = document.querySelector(".intro-date");
-bodyDate.innerHTML = `${day} ${hours}:${minutes}`; */
-
-// Feature #2
 let form = document.querySelector("#formSearch");
 
 function showSearch(event) {
@@ -32,36 +9,19 @@ function showSearch(event) {
 }
 form.addEventListener("submit", showSearch);
 
-/*
-function showTemperatureFar(event) {
-    event.preventDefault();
-    let introTemperature = document.querySelector(".intro-temperature");
-    introTemperature.innerHTML = formulaFar;
-  }
-  
-  let fareight = document.querySelector("#farenheit");
-  fareight.addEventListener("click", showTemperatureFar);
-  
-  let formulaFar = (17 * 9) / 5 + 32; 
-  
-  function showTemperatureCel(event) {
-    event.preventDefault();
-    let intoTemperature = document.querySelector(".intro-temperature");
-    let formulaCelcius = ((formulaFar - 32) * 5) / 9;
-    intoTemperature.innerHTML = formulaCelcius;
-  }
-  let celsius = document.querySelector("#celsius");
-  celsius.addEventListener("click", showTemperatureCel);*/
-
 function convertFahrenheit(event) {
   event.preventDefault();
 
   let temperatureElement = document.querySelector("#temperature");
+  //remove active class from Celcisu
+  celsiusLink.classList.remove("active");
+  //add active to Farenheit
+  fahrenheitLink.classList.add("active");
   let temperature = temperatureElement.innerHTML;
   temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
 }
-
+//fix forecast-temp convertion!!!
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertFahrenheit);
 fahrenheitLink.addEventListener("click", convertFahrAll);
@@ -69,10 +29,14 @@ fahrenheitLink.addEventListener("click", convertFahrAll);
 function convertCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
+    //add active class from Celcisu
+    celsiusLink.classList.add("active");
+    //remove active to Farenheit
+    fahrenheitLink.classList.remove("active");
 
-  temperatureElement.innerHTML = 20;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
-
+//fix forecast-temp convertion!!!
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertCelsius);
 celsiusLink.addEventListener("click", convertCelAll);
@@ -124,17 +88,17 @@ function formatDate(timestamp){
 }
 
 function showWeather(response) {
+ 
 
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  celsiusTemperature = response.data.main.temp;
+  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemperature);
   document.querySelector("#pressure").innerHTML = response.data.main.pressure;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#visibility").innerHTML = response.data.visibility;
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#date").innerHTML = formatDate(response.data.dt * 1000);
-
+  document.querySelector('#icon').setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 function showCity(event) {
