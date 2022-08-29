@@ -86,7 +86,30 @@ function formatDate(timestamp){
 
   return `${day} ${hours}:${minutes}` ;
 }
-
+function formatSunrise(timestamp){
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`
+}
+function formatSunset(timestamp){
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`
+}
 function showWeather(response) {
  
 
@@ -99,6 +122,8 @@ function showWeather(response) {
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#date").innerHTML = formatDate(response.data.dt * 1000);
   document.querySelector('#icon').setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#sunrise").innerHTML = formatSunrise(response.data.sys.sunrise * 1000);
+  document.querySelector("#sunset").innerHTML = formatSunset(response.data.sys.sunset * 1000);
 }
 
 function showCity(event) {
