@@ -188,6 +188,10 @@ function showWeather(response) {
 function showCity(event) {
 
   event.preventDefault();
+  //add active class from Celcisu
+celsiusLink.classList.add("active");
+//remove active to Farenheit
+fahrenheitLink.classList.remove("active");
   let city = document.querySelector("#searchCity").value;
   let apiKey = '09d7fe078a1bda5730bd116188593f4a';
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
